@@ -44,8 +44,13 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
 
+      #- name: Login to Amazon ECR
+      #  uses: aws-actions/amazon-ecr-login@v2
+
       - name: Login to Amazon ECR
+        id: login-ecr # 👈 This exact string must match your 'steps.login-ecr' reference
         uses: aws-actions/amazon-ecr-login@v2
+
 
       - name: Run Docker Image to serve users
         run: |
