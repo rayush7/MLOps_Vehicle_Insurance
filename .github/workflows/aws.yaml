@@ -47,15 +47,20 @@ jobs:
       - name: Login to Amazon ECR
         uses: aws-actions/amazon-ecr-login@v2
 
-      - name: Debug image name
-        run: echo "${{ steps.login-ecr.outputs.registry }}/${{ secrets.ECR_REPO }}:latest"
-
-      - name: Run Docker Image to serve users
+      - name: Get ECR registry
         run: |
+         ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
+         REGION=${{ secrets.AWS_DEFAULT_REGION }}
+         echo "REGISTRY=$ACCOUNT_ID.dkr.ecr.$REGION.amazonaws.com" >> $GITHUB_ENV
+
+      - name: Run Docker Image
+        run: |
+         echo "Using image: $REGISTRY/${{ secrets.ECR_REPO }}:latest"
+
          docker run -d \
-         -e AWS_ACCESS_KEY_ID="${{ secrets.AWS_ACCESS_KEY_ID }}" \
-         -e AWS_SECRET_ACCESS_KEY="${{ secrets.AWS_SECRET_ACCESS_KEY }}" \
-         -e AWS_DEFAULT_REGION="${{ secrets.AWS_DEFAULT_REGION }}" \
-         -e MONGODB_URL="${{ secrets.MONGODB_URL }}" \
-         -p 5000:5000 \
-         ${{ steps.login-ecr.outputs.registry }}/${{ secrets.ECR_REPO }}:latest
+          -e AWS_ACCESS_KEY_ID="${{ secrets.AWS_ACCESS_KEY_ID }}" \
+          -e AWS_SECRET_ACCESS_KEY="${{ secrets.AWS_SECRET_ACCESS_KEY }}" \
+          -e AWS_DEFAULT_REGION="${{ secrets.AWS_DEFAULT_REGION }}" \
+          -e MONGODB_URL="${{ secrets.MONGODB_URL }}" \
+          -p 5000:5000 \
+          $REGISTRY/${{ secrets.ECR_REPO }}:latest
