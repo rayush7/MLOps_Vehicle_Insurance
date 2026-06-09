@@ -4,7 +4,7 @@
 ```markdown
 # 🚗 Vehicle Insurance Prediction — End-to-End MLOps Pipeline
 
-An industrial-grade **MLOps project** demonstrating a complete machine learning lifecycle — from data ingestion to model deployment — integrated with cloud services, CI/CD, and containerization.
+An industrial grade **MLOps project** demonstrating a complete machine learning lifecycle — from data ingestion to model deployment — integrated with cloud services, CI/CD, and containerization.
 
 This project showcases how a real-world ML system is built, trained, validated, deployed, and continuously delivered using modern engineering practices.
 
