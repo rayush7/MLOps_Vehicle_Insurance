@@ -13,7 +13,7 @@ PyYAML
 boto3
 mypy-boto3-s3
 botocore
-fastapi
+fastapi==0.136.1
 python-multipart
 uvicorn
 jinja2
