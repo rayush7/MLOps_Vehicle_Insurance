@@ -252,13 +252,3 @@ docker run -p 5000:5000 vehicle-app
 This project demonstrates how a raw dataset evolves into a fully deployed ML system with automation, scalability, and reproducibility — mirroring real-world industry ML pipelines.
 
 ```
-
----
-
-If you want, I can also:
-- :contentReference[oaicite:11]{index=11}  
-- or :contentReference[oaicite:12]{index=12}  
-- or :contentReference[oaicite:13]{index=13}  
-
-Just tell me.
-```
