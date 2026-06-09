@@ -1,4 +1,3 @@
-Here’s a polished, recruiter-ready **README.md** that presents your MLOps project like a production-grade system. You can copy-paste this directly into your repo.
 
 ---
 
