@@ -50,7 +50,7 @@
 
 23. Before moving to next component of Model Evaluation, some AWS services setup is needed:
       * Login to AWS console.
-      * Keep region set as - us-east-1
+      * Keep region set as : us-east-1
       * Go to IAM >> Create new user (name: firstproj)
       * Attach policy >> select AdministratorAccess >> next >> create user
       * Go to the user >> Security Credentials >> Access Keys >> Create access key
