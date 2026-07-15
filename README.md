@@ -1,174 +1,487 @@
-# 🚗 Vehicle Insurance Prediction — End-to-End MLOps Pipeline
+````markdown
+# 🚗 End-to-End MLOps Vehicle Project
 
-An industrial-grade **MLOps project** demonstrating a complete machine learning lifecycle—from data ingestion to model deployment—using **FastAPI**, MongoDB Atlas, AWS, Docker, and GitHub Actions.
+> A production-ready **End-to-End MLOps pipeline** that demonstrates how to build, validate, train, evaluate, version, deploy, and serve a Machine Learning model using **MongoDB Atlas, FastAPI, Docker, AWS, and GitHub Actions**.
 
-## 🔥 Key Highlights
+<p align="center">
 
-- ⚙️ Modular project template generator
-- 🧩 Structured Python package architecture
-- 🗄️ MongoDB Atlas as cloud database
-- ☁️ AWS (S3, EC2, ECR, IAM) integration
-- 🐳 Docker containerization
-- 🔁 GitHub Actions CI/CD
-- ⚡ FastAPI REST API
-- 🚀 End-to-end ML pipeline
+![Python](https://img.shields.io/badge/Python-3.12-blue?style=for-the-badge&logo=python)
+![FastAPI](https://img.shields.io/badge/FastAPI-API-009688?style=for-the-badge&logo=fastapi)
+![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-green?style=for-the-badge&logo=mongodb)
+![AWS](https://img.shields.io/badge/AWS-S3%20%7C%20EC2%20%7C%20ECR-orange?style=for-the-badge&logo=amazonaws)
+![Docker](https://img.shields.io/badge/Docker-Container-blue?style=for-the-badge&logo=docker)
+![GitHub Actions](https://img.shields.io/badge/GitHub-Actions-black?style=for-the-badge&logo=githubactions)
+![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-ML-orange?style=for-the-badge&logo=scikitlearn)
 
-## 🏗️ Architecture
+</p>
+
+---
+
+# 📌 Overview
+
+This repository demonstrates a complete **Machine Learning Operations (MLOps)** workflow following production-oriented software engineering practices.
+
+Starting from storing data in **MongoDB Atlas**, the project builds a modular ML pipeline that performs:
+
+- Data Ingestion
+- Data Validation
+- Data Transformation
+- Model Training
+- Model Evaluation
+- Model Registry using AWS S3
+- Model Deployment
+- Prediction Serving through **FastAPI**
+- Docker Containerization
+- CI/CD Automation with GitHub Actions
+- Deployment on AWS EC2
+
+Each pipeline stage is implemented independently, making the project scalable, maintainable, and easy to extend.
+
+---
+
+# 🏗️ High-Level Architecture
 
 ```text
-MongoDB Atlas
-      │
-      ▼
-Data Ingestion
-      ▼
-Data Validation
-      ▼
-Data Transformation
-      ▼
-Model Training
-      ▼
-Model Evaluation
-      ▼
-AWS S3 Model Registry
-      ▼
-Model Pusher
-      ▼
-FastAPI Prediction API
+                   Dataset
+                      │
+                      ▼
+               MongoDB Atlas
+                      │
+                      ▼
+             Data Ingestion Pipeline
+                      │
+                      ▼
+            Data Validation Pipeline
+                      │
+                      ▼
+         Data Transformation Pipeline
+                      │
+                      ▼
+             Model Training Pipeline
+                      │
+                      ▼
+            Model Evaluation Pipeline
+                      │
+                      ▼
+             AWS S3 Model Registry
+                      │
+                      ▼
+              Model Pusher Pipeline
+                      │
+                      ▼
+           FastAPI Prediction Service
+                      │
+                      ▼
+                Docker Container
+                      │
+                      ▼
+                 Amazon ECR
+                      │
+                      ▼
+                 Amazon EC2
 ```
 
-## 📦 Project Setup
+---
+
+# ✨ Key Features
+
+- End-to-End MLOps workflow
+- Modular pipeline architecture
+- MongoDB Atlas integration
+- Schema-based data validation
+- Automated data transformation
+- Model training pipeline
+- Threshold-based model evaluation
+- AWS S3 model registry
+- Prediction API built with FastAPI
+- Docker containerization
+- GitHub Actions CI/CD
+- Self-hosted GitHub Runner
+- AWS EC2 deployment
+- Configuration-driven project structure
+
+---
+
+# 🛠 Tech Stack
+
+| Category | Technologies |
+|-----------|--------------|
+| Programming Language | Python 3.12 |
+| API Framework | FastAPI |
+| Database | MongoDB Atlas |
+| Machine Learning | Scikit-Learn |
+| Cloud Services | AWS S3, EC2, ECR |
+| CI/CD | GitHub Actions |
+| Containerization | Docker |
+| Version Control | Git & GitHub |
+
+---
+
+# 📂 Pipeline Workflow
+
+## 🚀 Project Initialization
+
+- Generate project template using `template.py`
+- Configure `setup.py`
+- Configure `pyproject.toml`
+- Create Conda environment
+- Install project dependencies
+
+---
+
+## 🍃 MongoDB Atlas
+
+Project setup includes:
+
+- MongoDB Atlas Cluster
+- Database User
+- Network Access Configuration
+- Connection String
+- Dataset upload through Jupyter Notebook
+
+The dataset is stored inside MongoDB Atlas and serves as the source for the ingestion pipeline.
+
+---
+
+## 📥 Data Ingestion
+
+The ingestion module includes:
+
+- MongoDB connection configuration
+- Data access layer
+- Configuration entities
+- Artifact entities
+- Data ingestion component
+- Pipeline integration
+
+This stage fetches records from MongoDB Atlas and converts them into a Pandas DataFrame for downstream processing.
+
+---
+
+## ✅ Data Validation
+
+Validation is driven using a schema configuration.
+
+Implemented components include:
+
+- Dataset schema
+- Validation utilities
+- Validation configuration
+- Validation artifacts
+
+---
+
+## 🔄 Data Transformation
+
+Responsible for preparing data before training.
+
+Includes:
+
+- Feature transformation
+- Estimator configuration
+- Transformation artifacts
+- Transformation pipeline
+
+---
+
+## 🤖 Model Training
+
+The training pipeline consists of:
+
+- Training configuration
+- Model training
+- Training artifacts
+- Estimator implementation
+
+---
+
+## ☁️ AWS Integration
+
+AWS services are used to maintain a centralized model registry.
+
+Configured services include:
+
+- IAM
+- Amazon S3
+- AWS Credentials
+- AWS Connection Configuration
+- Cloud Storage Utilities
+
+The project maintains:
+
+- Model Registry Bucket
+- Registry Key
+- Evaluation Threshold
+
+---
+
+## 📊 Model Evaluation
+
+The evaluation component compares the newly trained model against the currently deployed production model stored in AWS S3.
+
+Only models meeting the configured threshold are promoted for deployment.
+
+---
+
+## 📦 Model Pusher
+
+Responsible for:
+
+- Uploading trained models
+- Registering production models
+- Managing model artifacts inside AWS S3
+
+---
+
+## ⚡ Prediction Service
+
+The serving layer includes:
+
+- FastAPI application
+- Prediction pipeline
+- HTML templates
+- Static assets
+
+The API serves predictions using the latest approved model from the registry.
+
+---
+
+## 🐳 Dockerization
+
+Containerization includes:
+
+- Dockerfile
+- .dockerignore
+- Portable deployment image
+
+---
+
+## 🔄 Continuous Integration & Deployment
+
+GitHub Actions automates:
+
+- Docker image build
+- Image push to Amazon ECR
+- Deployment to AWS EC2 through a Self-hosted Runner
+
+---
+
+# ☁️ AWS Services
+
+- IAM
+- Amazon S3
+- Amazon EC2
+- Amazon ECR
+
+---
+
+# 🔐 Environment Variables
 
 ```bash
-python template.py
+MONGODB_URL=<MongoDB Connection String>
 
+AWS_ACCESS_KEY_ID=<AWS Access Key>
+
+AWS_SECRET_ACCESS_KEY=<AWS Secret Key>
+
+AWS_DEFAULT_REGION=us-east-1
+```
+
+---
+
+# 🚀 Getting Started
+
+## Clone Repository
+
+```bash
+git clone <repository-url>
+
+cd <repository-name>
+```
+
+---
+
+## Create Virtual Environment
+
+```bash
 conda create -n vehicle python=3.12 -y
+
 conda activate vehicle
+```
+
+---
+
+## Install Dependencies
+
+```bash
 pip install -r requirements.txt
+```
+
+---
+
+## Verify Installation
+
+```bash
 pip list
 ```
 
-Configure `setup.py` and `pyproject.toml` for local package imports.
+---
 
-## 🗄️ MongoDB Atlas
-
-- Create Atlas project and M0 cluster
-- Create DB user
-- Allow network access (`0.0.0.0/0`)
-- Obtain Python connection string
-- Store in environment variable:
+## Run Training Pipeline
 
 ```bash
-export MONGODB_URL="mongodb+srv://<username>:<password>@cluster..."
+python demo.py
 ```
 
-Push the dataset from the notebook and verify it in Atlas.
+---
 
-## 🔄 ML Pipeline
-
-### Data Ingestion
-- Read data from MongoDB
-- Convert to DataFrame
-- Save ingestion artifacts
-
-### Data Validation
-- Schema validation
-- Data quality checks
-
-### Data Transformation
-- Feature engineering
-- Encoding & scaling
-- Train/test split
-
-### Model Trainer
-- Model training
-- Artifact generation
-
-### Model Evaluation
-- Compare current and previous models
-- Register better model
-
-### Model Pusher
-- Upload best model to AWS S3
-
-## ☁️ AWS Services
-
-- Amazon S3 — Model Registry
-- Amazon EC2 — Deployment
-- Amazon ECR — Docker Registry
-- IAM — Access Management
-
-Environment variables:
+## Start FastAPI Server
 
 ```bash
-export AWS_ACCESS_KEY_ID="..."
-export AWS_SECRET_ACCESS_KEY="..."
-export AWS_DEFAULT_REGION="us-east-1"
+python app.py
 ```
 
-## 🐳 Docker
+> Depending on your implementation, the application can then be accessed on the configured host and port.
+
+---
+
+# 🐳 Docker
+
+Build Docker image
 
 ```bash
-docker build -t vehicle-app .
-docker run -p 5000:5000 vehicle-app
+docker build -t vehicleproj .
 ```
 
-## 🔁 CI/CD
+Run Docker container
 
-- Docker image build
-- Push to Amazon ECR
-- Self-hosted GitHub Actions runner on EC2
-- Automatic deployment
+```bash
+docker run -p 5000:5000 vehicleproj
+```
 
-## ⚡ FastAPI API
+---
 
-### Endpoints
-
-| Endpoint | Description |
-|-----------|-------------|
-| `/` | Home |
-| `/training` | Trigger training pipeline |
-| `/predict` | Prediction endpoint |
-
-## 📁 Project Structure
+# 🌐 Deployment Flow
 
 ```text
-src/
- ├── components/
- ├── configuration/
- ├── cloud_storage/
- ├── data_access/
- ├── entity/
- └── pipeline/
-notebook/
-templates/
-static/
-Dockerfile
-requirements.txt
-setup.py
-pyproject.toml
+GitHub Repository
+        │
+        ▼
+ GitHub Actions Workflow
+        │
+        ▼
+ Docker Image Build
+        │
+        ▼
+ Amazon Elastic Container Registry (ECR)
+        │
+        ▼
+ Amazon EC2
+        │
+        ▼
+ FastAPI Prediction Service
 ```
 
-## 💡 Skills Demonstrated
+---
 
-- MLOps
-- FastAPI
-- Docker
-- AWS
-- MongoDB
-- GitHub Actions
-- CI/CD
+# 📁 Project Structure
+
+```text
+Project
+│
+├── components
+├── configuration
+├── cloud_storage
+├── constants
+├── data_access
+├── entity
+├── notebook
+├── static
+├── templates
+├── app.py
+├── demo.py
+├── template.py
+├── setup.py
+├── pyproject.toml
+├── requirements.txt
+├── Dockerfile
+└── .github/
+    └── workflows/
+```
+
+---
+
+# 🔄 Complete MLOps Pipeline
+
+```text
+Dataset
+    │
+    ▼
+MongoDB Atlas
+    │
+    ▼
+Data Ingestion
+    │
+    ▼
+Data Validation
+    │
+    ▼
+Data Transformation
+    │
+    ▼
+Model Training
+    │
+    ▼
+Model Evaluation
+    │
+    ▼
+AWS S3 Model Registry
+    │
+    ▼
+Model Pusher
+    │
+    ▼
+FastAPI Prediction API
+    │
+    ▼
+Docker
+    │
+    ▼
+Amazon ECR
+    │
+    ▼
+Amazon EC2
+```
+
+---
+
+# 💡 MLOps Concepts Demonstrated
+
+- Modular Pipeline Architecture
+- Configuration Management
+- Artifact Management
 - Data Validation
 - Feature Engineering
 - Model Registry
-- Production Deployment
+- Cloud Storage
+- Model Versioning
+- Continuous Integration
+- Continuous Deployment
+- Containerized Inference
+- Production-ready API Serving
 
-## 🚀 Future Enhancements
+---
 
-- Kubernetes
-- MLflow
-- Monitoring
-- Feature Store
+# ⭐ Project Highlights
 
-## ⭐ Summary
+- ✅ End-to-End MLOps Pipeline
+- ✅ MongoDB Atlas Integration
+- ✅ AWS S3 Model Registry
+- ✅ FastAPI Prediction Service
+- ✅ Dockerized Deployment
+- ✅ GitHub Actions CI/CD
+- ✅ Self-hosted GitHub Runner
+- ✅ Amazon EC2 Deployment
+- ✅ Modular and Scalable Architecture
 
-This project demonstrates a complete production-style MLOps workflow, covering data ingestion, validation, transformation, model training, evaluation, cloud model registry, containerization, CI/CD, and deployment through a high-performance FastAPI service. 
+---
