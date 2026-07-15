@@ -1,4 +1,3 @@
-````markdown
 # 🚗 End-to-End MLOps Vehicle Project
 
 > A production-ready **End-to-End MLOps pipeline** that demonstrates how to build, validate, train, evaluate, version, deploy, and serve a Machine Learning model using **MongoDB Atlas, FastAPI, Docker, AWS, and GitHub Actions**.
