@@ -125,7 +125,7 @@ docker run -p 5000:5000 vehicle-app
 
 | Endpoint | Description |
 |-----------|-------------|
-| `/` | Home / Health |
+| `/` | Home |
 | `/training` | Trigger training pipeline |
 | `/predict` | Prediction endpoint |
 
